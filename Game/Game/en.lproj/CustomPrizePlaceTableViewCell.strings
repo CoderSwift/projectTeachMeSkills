@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "10.10.2010"; ObjectID = "WxN-63-xJo"; */
+"WxN-63-xJo.text" = "10.10.2010";
+
+/* Class = "UILabel"; text = "Date:"; ObjectID = "cnb-bQ-FKN"; */
+"cnb-bQ-FKN.text" = "Дата:";
+
+/* Class = "UILabel"; text = "Score:"; ObjectID = "etc-5d-Fhk"; */
+"etc-5d-Fhk.text" = "Очки:";
+
+/* Class = "UILabel"; text = "Alexander"; ObjectID = "jve-NT-wbe"; */
+"jve-NT-wbe.text" = "Александр";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "rRx-I6-jBo"; */
+"rRx-I6-jBo.text" = "0";

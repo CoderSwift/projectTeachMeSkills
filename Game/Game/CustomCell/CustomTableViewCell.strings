@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Alexander"; ObjectID = "GBJ-GB-8TJ"; */
+"GBJ-GB-8TJ.text" = "Александр";
+
+/* Class = "UILabel"; text = "10.10.2010"; ObjectID = "JFT-JE-GXa"; */
+"JFT-JE-GXa.text" = "10.10.2010";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Voc-VU-RJp"; */
+"Voc-VU-RJp.text" = "0";
+
+/* Class = "UILabel"; text = "4."; ObjectID = "dj5-h3-0oo"; */
+"dj5-h3-0oo.text" = "4.";
+
+/* Class = "UILabel"; text = "Score:"; ObjectID = "jWS-En-zTF"; */
+"jWS-En-zTF.text" = "Очки:";
+
+/* Class = "UILabel"; text = "Date:"; ObjectID = "ko6-V1-0YP"; */
+"ko6-V1-0YP.text" = "Дата:";

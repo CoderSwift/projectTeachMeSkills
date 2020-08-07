@@ -1,0 +1,63 @@
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "050-9j-ecs"; */
+"050-9j-ecs.normalTitle" = "3";
+
+/* Class = "UIButton"; normalTitle = "Сhange password"; ObjectID = "0OV-Lm-muY"; */
+"0OV-Lm-muY.normalTitle" = "Поменять пароль";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "4fl-bK-9So"; */
+"4fl-bK-9So.normalTitle" = "0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "78D-Di-zbn"; */
+"78D-Di-zbn.text" = "Текст";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "8nQ-Ws-58f"; */
+"8nQ-Ws-58f.normalTitle" = "Сохранить";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "DdM-Md-n2s"; */
+"DdM-Md-n2s.normalTitle" = "7";
+
+/* Class = "UIButton"; normalTitle = "→"; ObjectID = "E62-wR-Ir7"; */
+"E62-wR-Ir7.normalTitle" = "→";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "HZs-A1-l2a"; */
+"HZs-A1-l2a.normalTitle" = "8";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "I5v-UM-285"; */
+"I5v-UM-285.normalTitle" = "6";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "PwT-Dd-C6H"; */
+"PwT-Dd-C6H.normalTitle" = "4";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "VND-44-aUF"; */
+"VND-44-aUF.normalTitle" = "5";
+
+/* Class = "UITextField"; text = "Сreate a password"; ObjectID = "XJ7-yf-uso"; */
+"XJ7-yf-uso.text" = "Придумайте пароль";
+
+/* Class = "UILabel"; text = "My Gallery"; ObjectID = "Zph-39-h5Z"; */
+"Zph-39-h5Z.text" = "Моя галерея";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "aAe-c2-Msj"; */
+"aAe-c2-Msj.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "✕"; ObjectID = "beB-zi-buR"; */
+"beB-zi-buR.normalTitle" = "✕";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "cG9-ce-jro"; */
+"cG9-ce-jro.normalTitle" = "2";
+
+/* Class = "UILabel"; text = "111 Photo"; ObjectID = "cqz-ab-x3K"; */
+"cqz-ab-x3K.text" = "111 Фото";
+
+/* Class = "UILabel"; text = "maximum  4 digits "; ObjectID = "dgX-mj-cv1"; */
+"dgX-mj-cv1.text" = "Максимум 4 цифры ";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "wjX-st-eVh"; */
+"wjX-st-eVh.normalTitle" = "9";
+
+/* Class = "UITextField"; placeholder = "Text message"; ObjectID = "zID-Qi-wKJ"; */
+"zID-Qi-wKJ.placeholder" = "Текст сообщения";
+
+/* Class = "UITextField"; text = "Комментировать..."; ObjectID = "zID-Qi-wKJ"; */
+"zID-Qi-wKJ.text" = "Комментировать...";

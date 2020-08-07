@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "t"; ObjectID = "16k-aa-9gw"; */
+"16k-aa-9gw.text" = "t";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "UOm-Mi-1he"; */
+"UOm-Mi-1he.text" = "Город";
+
+/* Class = "UILabel"; text = "°"; ObjectID = "bgx-0b-R3l"; */
+"bgx-0b-R3l.text" = "°";
+
+/* Class = "UILabel"; text = "day of week"; ObjectID = "e3b-oO-Apm"; */
+"e3b-oO-Apm.text" = "День недели";

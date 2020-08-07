@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Banco.ttf">
+            <string>BancoDi</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="Game" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHB-Pn-04q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alexander" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBJ-GB-8TJ">
+                                <rect key="frame" x="90" y="3" width="200" height="20"/>
+                                <fontDescription key="fontDescription" name="BancoDi" family="BancoDi" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWS-En-zTF">
+                                <rect key="frame" x="90" y="24" width="40" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="DgQ-FH-d9E"/>
+                                    <constraint firstAttribute="height" constant="16" id="zcV-GZ-mBM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BancoDi" family="BancoDi" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.95294117649999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko6-V1-0YP">
+                                <rect key="frame" x="90" y="41" width="32" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="YD6-Ih-Gcm"/>
+                                    <constraint firstAttribute="height" constant="16" id="k16-cB-GbB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BancoDi" family="BancoDi" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.95294117649999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Voc-VU-RJp">
+                                <rect key="frame" x="133" y="24" width="147" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="5LB-dX-T5i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BancoDi" family="BancoDi" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.10.2010" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFT-JE-GXa">
+                                <rect key="frame" x="125" y="41" width="155" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="qhg-JZ-SaL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BancoDi" family="BancoDi" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj5-h3-0oo">
+                                <rect key="frame" x="35" y="0.0" width="45" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="EQH-E1-JFd"/>
+                                    <constraint firstAttribute="height" constant="70" id="Hpn-eU-NHS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BancoDi" family="BancoDi" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GBJ-GB-8TJ" firstAttribute="top" secondItem="LHB-Pn-04q" secondAttribute="top" constant="3" id="0eg-h0-CJB"/>
+                            <constraint firstItem="jWS-En-zTF" firstAttribute="leading" secondItem="dj5-h3-0oo" secondAttribute="trailing" constant="10" id="10d-Gu-AIr"/>
+                            <constraint firstItem="jWS-En-zTF" firstAttribute="top" secondItem="GBJ-GB-8TJ" secondAttribute="bottom" constant="1" id="6Pn-vi-6CL"/>
+                            <constraint firstItem="dj5-h3-0oo" firstAttribute="top" secondItem="LHB-Pn-04q" secondAttribute="top" id="Dyi-NT-13A"/>
+                            <constraint firstAttribute="trailing" secondItem="GBJ-GB-8TJ" secondAttribute="trailing" constant="30" id="PXr-jd-io4"/>
+                            <constraint firstItem="Voc-VU-RJp" firstAttribute="top" secondItem="GBJ-GB-8TJ" secondAttribute="bottom" constant="1" id="PZp-57-4UC"/>
+                            <constraint firstItem="GBJ-GB-8TJ" firstAttribute="leading" secondItem="dj5-h3-0oo" secondAttribute="trailing" constant="10" id="VdK-uH-1d9"/>
+                            <constraint firstAttribute="trailing" secondItem="Voc-VU-RJp" secondAttribute="trailing" constant="40" id="XHK-AF-TPi"/>
+                            <constraint firstItem="JFT-JE-GXa" firstAttribute="leading" secondItem="ko6-V1-0YP" secondAttribute="trailing" constant="3" id="Xmg-zF-bkp"/>
+                            <constraint firstAttribute="trailing" secondItem="JFT-JE-GXa" secondAttribute="trailing" constant="40" id="hZ6-XU-ag5"/>
+                            <constraint firstItem="JFT-JE-GXa" firstAttribute="top" secondItem="Voc-VU-RJp" secondAttribute="bottom" constant="1" id="kop-Mz-Oqy"/>
+                            <constraint firstItem="ko6-V1-0YP" firstAttribute="leading" secondItem="dj5-h3-0oo" secondAttribute="trailing" constant="10" id="o3G-40-cES"/>
+                            <constraint firstItem="Voc-VU-RJp" firstAttribute="leading" secondItem="jWS-En-zTF" secondAttribute="trailing" constant="3" id="rQ7-to-Wy9"/>
+                            <constraint firstItem="dj5-h3-0oo" firstAttribute="leading" secondItem="LHB-Pn-04q" secondAttribute="leading" constant="35" id="sLp-gs-Z9R"/>
+                            <constraint firstItem="ko6-V1-0YP" firstAttribute="top" secondItem="jWS-En-zTF" secondAttribute="bottom" constant="1" id="ulE-Db-e9c"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="LHB-Pn-04q" secondAttribute="trailing" id="Bxk-IS-duD"/>
+                    <constraint firstAttribute="bottom" secondItem="LHB-Pn-04q" secondAttribute="bottom" constant="5" id="TJz-c9-plK"/>
+                    <constraint firstItem="LHB-Pn-04q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VY1-96-nNq"/>
+                    <constraint firstItem="LHB-Pn-04q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uH2-HI-6tm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="labelDateGame" destination="JFT-JE-GXa" id="ksc-Mj-Unn"/>
+                <outlet property="labelName" destination="GBJ-GB-8TJ" id="gux-Jl-DN5"/>
+                <outlet property="labelNumberCell" destination="dj5-h3-0oo" id="iES-sn-Pea"/>
+                <outlet property="labelScore" destination="Voc-VU-RJp" id="rSC-lE-TsS"/>
+                <outlet property="titleDate" destination="ko6-V1-0YP" id="rjL-CJ-BFQ"/>
+                <outlet property="titleScore" destination="jWS-En-zTF" id="qTt-s3-qwr"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="144.30803571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

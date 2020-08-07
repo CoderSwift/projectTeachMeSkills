@@ -1,0 +1,23 @@
+
+/* Class = "UIButton"; normalTitle = "Records"; ObjectID = "ESU-Zr-8GS"; */
+"ESU-Zr-8GS.normalTitle" = "Records";
+
+/* Class = "UILabel"; text = "Barriers"; ObjectID = "EqP-r8-tKP"; */
+"EqP-r8-tKP.text" = "Barriers";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "HKn-bP-l8y"; */
+"HKn-bP-l8y.normalTitle" = "Start";
+
+/* Class = "UIButton"; normalTitle = "Settings"; ObjectID = "OMe-Lz-W8b"; */
+"OMe-Lz-W8b.normalTitle" = "Settings";
+
+/* Class = "UILabel"; text = "Level"; ObjectID = "m0j-Zb-mYH"; */
+"m0j-Zb-mYH.text" = "Level";
+
+/* Class = "UIButton"; normalTitle = "Exit"; ObjectID = "pzu-Ut-S1W"; */
+"pzu-Ut-S1W.normalTitle" = "Exit";
+
+/* Class = "UILabel"; text = "Spaceship"; ObjectID = "r2c-xO-NO6"; */
+"r2c-xO-NO6.text" = "Spaceship";
+
+
