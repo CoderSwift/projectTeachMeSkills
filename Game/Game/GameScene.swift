@@ -2,8 +2,6 @@ import SpriteKit
 import GameplayKit
 import SwiftEntryKit
 
-
-
 class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     //    UIElement
@@ -12,6 +10,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     var labelScore = UILabel()
     var scoreBox = UIImageView()
     var buttonPause = UIButton()
+    var buttonShot = UIButton()
     
     // Variable
     var heightGround  = Int()
@@ -27,11 +26,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     let ncObserver = NotificationCenter.default
     var attriputes = EKAttributes()
     var randomPosition = GKRandomDistribution()
-   
+    
     
     // Sprites Nodes
     var moveSequence = SKAction()
     var player = SKSpriteNode()
+    var rocket = SKSpriteNode()
     var steroids = SKSpriteNode()
     var coins = SKSpriteNode()
     var explosion = SKSpriteNode()
@@ -46,30 +46,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     var explosionHeight = 90
     var constantLeftRight = 15
     var scoreBoxWidth = 100
-     var scoreBoxHeight = 40
+    var scoreBoxHeight = 40
     var buttonPauseWidth = 40
     var buttonPauseHeight = 40
     var heightLimits = 100
-
+    
     
     // Timer
     var animationDuration:TimeInterval = 6
     var gameTimerSteroids = Timer()
     var gameTimerCoins = Timer()
+    var animationDurationShot:TimeInterval = 0.3
     var afterPause = 3
     var createSteroidsTimeInterval:Double =  3
     var createCoinsTimeInterval:Double =  4
     var timerStart = Timer()
     
+    
     // Mask
     let steroidsCategory:UInt32 = 0x1 << 1
     let carCategory:UInt32 = 0x1 << 0
+    let rocketCategory:UInt32 = 0x1 << 3
     let coinsCategory:UInt32 = 0x1 << 2
     
     
-     private var settings: Settings?
+    private var settings: Settings?
+    
     override func didMove(to view: SKView) {
         installPhysics()
+        
         createGrounds()
         createlabelCount()
         createScoreBox()
@@ -78,35 +83,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         self.createCar()
         timerCountStart()
         createButtonPause()
+        createButtonShot()
         determineLevel()
         randomPosition = GKRandomDistribution(lowestValue: 0 + Int(self.steroids.size.width)/2, highestValue: Int((self.view?.frame.size.width)! - self.steroids.size.width))
-    }
-    
-    func installPhysics(){
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-        self.physicsWorld.contactDelegate = self
-        self.anchorPoint = CGPoint(x: 0, y: 0)
-    }
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        var explosionBody:SKPhysicsBody
-        var carBody:SKPhysicsBody
-        var coinsBody:SKPhysicsBody
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            explosionBody = contact.bodyA
-            carBody = contact.bodyB
-            coinsBody = contact.bodyA
-        } else {
-            explosionBody = contact.bodyB
-            carBody = contact.bodyA
-            coinsBody = contact.bodyB
-            
-        }
-        if (explosionBody.categoryBitMask & carCategory) != 0 && (carBody.categoryBitMask & steroidsCategory) != 0 {
-            explosionDidCollideWithCar(explosionNode: explosionBody.node as! SKSpriteNode, carNode: carBody.node as! SKSpriteNode)
-        } else  {
-            coinsDidCollideWithCar(carNode: carBody.node as! SKSpriteNode, coinsNode: coinsBody.node as! SKSpriteNode)
-        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -132,6 +111,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             if player.contains(location) {
                 player.position = location
             }
+        }
+    }
+    
+    func installPhysics(){
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        self.physicsWorld.contactDelegate = self
+        self.anchorPoint = CGPoint(x: 0, y: 0)
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var explosionBody:SKPhysicsBody
+        var carBody:SKPhysicsBody
+        var rocketBody:SKPhysicsBody
+        var coinsBody:SKPhysicsBody
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            explosionBody = contact.bodyA
+            carBody = contact.bodyB
+            coinsBody = contact.bodyA
+            rocketBody = contact.bodyA
+        } else {
+            explosionBody = contact.bodyB
+            carBody = contact.bodyA
+            coinsBody = contact.bodyB
+            rocketBody = contact.bodyB
+            
+        }
+        if (carBody.categoryBitMask & steroidsCategory) != 0 {
+            explosionDidCollideWithCar(explosionNode: explosionBody.node as! SKSpriteNode, carNode: carBody.node as! SKSpriteNode)
+        } else if (explosionBody.categoryBitMask & carCategory) != 0 {
+            coinsDidCollideWithCar(carNode: carBody.node as! SKSpriteNode, coinsNode: coinsBody.node as! SKSpriteNode)
+        } else if (rocketBody.categoryBitMask & steroidsCategory) != 0 {
+            shotDidCollideWithSteroids(steroidsNode: rocketBody.node as! SKSpriteNode, rocketNode: explosionBody.node as! SKSpriteNode)
         }
     }
     
@@ -201,6 +212,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         coins.run(SKAction.repeatForever(moveSequence))
     }
     
+    @objc func createRocket(){
+           rocket = SKSpriteNode(imageNamed: "rocket")
+           rocket.position = player.position
+           rocket.position.y += 5
+           rocket.physicsBody = SKPhysicsBody(circleOfRadius: rocket.size.width/2)
+           rocket.physicsBody?.isDynamic = true
+           rocket.physicsBody?.categoryBitMask = rocketCategory
+           rocket.physicsBody?.contactTestBitMask = steroidsCategory
+           rocket.physicsBody?.collisionBitMask = 0
+           rocket.physicsBody?.usesPreciseCollisionDetection = true
+           self.addChild(rocket)
+           var actionArray = [SKAction]()
+           actionArray.append(SKAction.move(to: CGPoint(x: player.position.x, y: self.frame.size.height + 10), duration: animationDurationShot))
+           actionArray.append(SKAction.removeFromParent())
+           rocket.run(SKAction.sequence(actionArray))
+       }
+    
     @objc func prozessTimer() {
         self.countdownStartTime -= 1
         if countdownStartTime == 0 {
@@ -216,6 +244,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         timerStart = Timer.scheduledTimer(withTimeInterval: TimeInterval(afterPause), repeats: false, block: { (_) in
             self.startCointsAndSteroids()
         })
+    }
+    
+    func explosionAnimation(_ steroidsNode: SKNode ) {
+        let explosionAnim01 = SKTexture.init(imageNamed: "explosion-anim1")
+        let explosionAnim02 = SKTexture.init(imageNamed: "explosion-anim2")
+        let explosionAnim03 = SKTexture.init(imageNamed: "explosion-anim3")
+        let explosionAnim04 = SKTexture.init(imageNamed: "explosion-anim4")
+        let explosionAnim05 = SKTexture.init(imageNamed: "explosion-anim5")
+        let explosionAnim06 = SKTexture.init(imageNamed: "explosion-anim6")
+        let explosionAnim07 = SKTexture.init(imageNamed: "explosion-anim7")
+        let frames: [SKTexture] = [explosionAnim01, explosionAnim02, explosionAnim03, explosionAnim04, explosionAnim05, explosionAnim06, explosionAnim07]
+        explosion = SKSpriteNode(imageNamed: "explosion-anim1")
+        explosion.size = CGSize(width: explosionWidth, height: explosionHeight)
+        explosion.position = steroidsNode.position
+        explosion.zPosition = 4
+        let animation = SKAction.animate(with: frames, timePerFrame: 0.05)
+        explosion.run(SKAction.repeatForever(animation))
+        self.addChild(explosion)
+    }
+    
+    func shotDidCollideWithSteroids (steroidsNode:SKSpriteNode, rocketNode:SKSpriteNode) {
+        steroidsNode.removeFromParent()
+        self.rocket.removeFromParent()
+        explosionAnimation(steroidsNode)
+        _  = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: false) { (_) in
+            self.explosion.removeFromParent()
+        }
+        
     }
     
     func determineLevel (){
@@ -258,6 +314,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
     
+    
     func startCointsAndSteroids(){
         determineLevel ()
         gameTimerSteroids = Timer.scheduledTimer(timeInterval:TimeInterval(createSteroidsTimeInterval), target: self, selector: #selector(createSteroids), userInfo: nil, repeats: true)
@@ -265,6 +322,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         gameTimerCoins = Timer.scheduledTimer(timeInterval:TimeInterval(createCoinsTimeInterval), target: self, selector: #selector(createСoins), userInfo: nil, repeats: true)
         gameTimerSteroids.fire()
     }
+    
     
     func createCar() {
         self.settings = SettingsManager.shared.getSettings()
@@ -281,6 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         player.physicsBody?.collisionBitMask = 0
         self.addChild(player)
     }
+    
     
     func createGrounds() {
         for i in 0...3 {
@@ -305,18 +364,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     }
     
     func explosionDidCollideWithCar (explosionNode:SKSpriteNode, carNode:SKSpriteNode) {
-        explosion = SKSpriteNode(imageNamed: "explosion")
-        explosion.size = CGSize(width: explosionWidth, height: explosionHeight)
-        explosion.position = explosionNode.position
-        explosion.zPosition = 4
-        self.addChild(explosion)
         explosionNode.removeFromParent()
         carNode.removeFromParent()
-        self.timerStart.invalidate()
-        self.gameTimerSteroids.invalidate()
-        self.gameTimerCoins.invalidate()
-        showPopupGameOver()
-        pauseScene()
+        explosionAnimation(explosionNode)
+        _  = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: false) { (_) in
+            self.explosion.removeFromParent()
+            self.timerStart.invalidate()
+            self.gameTimerSteroids.invalidate()
+            self.gameTimerCoins.invalidate()
+            self.showPopupGameOver()
+            self.pauseScene()
+        }
     }
     
     func coinsDidCollideWithCar (carNode:SKSpriteNode, coinsNode:SKSpriteNode) {
@@ -376,6 +434,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             buttonPause.topAnchor.constraint(equalTo: self.view!.safeAreaLayoutGuide.topAnchor, constant: CGFloat(constraintTopPause))
         ])
     }
+    
+    func createButtonShot(){
+        buttonShot = UIButton()
+        buttonShot.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        buttonShot.setBackgroundImage(UIImage(named: "button-shot"), for: .normal)
+        buttonShot.contentMode = .scaleAspectFill
+        self.view?.addSubview(buttonShot)
+        buttonShot.translatesAutoresizingMaskIntoConstraints = false
+        buttonShot.addTarget(self, action: #selector(createRocket), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            buttonShot.rightAnchor.constraint(equalTo: self.view!.rightAnchor, constant: CGFloat(-constantLeftRight)),
+            buttonShot.bottomAnchor.constraint(equalTo: self.view!.safeAreaLayoutGuide.bottomAnchor, constant:  CGFloat(-constantLeftRight))
+        ])
+        
+    }
+    
     
     func setupAttriputes() -> EKAttributes {
         attriputes = EKAttributes.centerFloat
